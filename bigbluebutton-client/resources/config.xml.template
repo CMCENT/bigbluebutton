@@ -1,27 +1,31 @@
 <?xml version="1.0" ?>
 <config>
-    <localeversion suppressWarning="false">0.8</localeversion>
+    <localeversion suppressWarning="false">0.9.0</localeversion>
     <version>VERSION</version>
     <help url="http://HOST/help.html"/>
     <javaTest url="http://HOST/testjava.html"/>
     <porttest host="HOST" application="video/portTest" timeout="10000"/>    
     <bwMon server="HOST" application="video/bwTest"/>
-    <application uri="rtmp://HOST/bigbluebutton" host="http://HOST/bigbluebutton/api/enter" />
+    <application uri="rtmp://HOST/bigbluebutton" host="http://HOST/bigbluebutton/api/enter"/>
     <language userSelectionEnabled="true" />
     <skinning enabled="true" url="http://HOST/client/branding/css/BBBDefault.css.swf" />
     <shortcutKeys showButton="true" />
-    <layout showLogButton="false" showVideoLayout="false" showResetLayout="true" defaultLayout="Default"
+    <browserVersions chrome="CHROME_VERSION" firefox="FIREFOX_VERSION" flash="FLASH_VERSION" java="1.7.0_51" />
+    <layout showLogButton="false" showVideoLayout="false" showResetLayout="true" defaultLayout="bbb.layout.name.defaultlayout"
             showToolbar="true" showFooter="true" showMeetingName="true" showHelpButton="true" 
-            showLogoutWindow="true" showLayoutTools="true" showNetworkMonitor="false" confirmLogout="true"/>
+            showLogoutWindow="true" showLayoutTools="true" showNetworkMonitor="false" confirmLogout="true"
+            showRecordingNotification="true"/>
+    <meeting muteOnStart="false" />
+    <lock disableCamForLockedUsers="false" disableMicForLockedUsers="false" disablePrivateChatForLockedUsers="false" 
+          disablePublicChatForLockedUsers="false" lockLayoutForLockedUsers="false" lockOnJoin="true" lockOnJoinConfigurable="false"/>
             
 		<modules>
 		 
 		<module name="ChatModule" url="http://HOST/client/ChatModule.swf?v=VERSION" 
 			uri="rtmp://HOST/bigbluebutton" 
 			dependsOn="UsersModule"	
-			translationOn="false"
-			translationEnabled="false"	
 			privateEnabled="true"  
+			fontSize="12"
 			position="top-right"
 			baseTabIndex="701"
 			colorPickerIsVisible="false"
@@ -37,7 +41,7 @@
 
 		
 		<module name="DeskShareModule" 
-			url="http://HOST/client/DeskShareModule.swf?v=4105" 
+			url="http://HOST/client/DeskShareModule.swf?v=VERSION" 
 			uri="rtmp://HOST/deskShare"
 			showButton="true"
 			autoStart="false"
@@ -48,10 +52,14 @@
 		<module name="PhoneModule" url="http://HOST/client/PhoneModule.swf?v=VERSION" 
 			uri="rtmp://HOST/sip" 
 			autoJoin="true"
+			listenOnlyMode="true"
+			presenterShareOnly="false"
 			skipCheck="false"
 			showButton="true"
 			enabledEchoCancel="true"
-			useWebrtcIfAvailable="true"
+			useWebRTCIfAvailable="true"
+			showPhoneOption="false"
+			echoTestApp="9196"
 			dependsOn="UsersModule"
 		/>
 
@@ -87,21 +95,21 @@
 			glowBlurSize = "30.0"	
 		/>
 		
-		<module name="WhiteboardModule" url="http://HOST/client/WhiteboardModule.swf?v=4105" 
+		<module name="WhiteboardModule" url="http://HOST/client/WhiteboardModule.swf?v=VERSION" 
 			uri="rtmp://HOST/bigbluebutton" 
 			dependsOn="PresentModule"
 			baseTabIndex="601"
 			whiteboardAccess="presenter"
 			keepToolbarVisible="false"
 		/>
-
 <!--
+
     <module name="PollingModule" url="http://HOST/client/PollingModule.swf?v=VERSION" 
       uri="rtmp://HOST/bigbluebutton" 
       dependsOn="PresentModule"
     />
--->
     		
+-->
 		<module name="PresentModule" url="http://HOST/client/PresentModule.swf?v=VERSION" 
 			uri="rtmp://HOST/bigbluebutton" 
 			host="http://HOST" 

@@ -23,6 +23,16 @@ Panel {
   titleStyleName: "mypanelTitle";
 }
 
+ToolTip {
+	borderSkin      : ClassReference("org.bigbluebutton.skins.ToolTipSkin");
+	backgroundAlpha : 0.9;
+	cornerRadius    : 3;
+}
+
+.errorTip {
+	borderColor		: #3b3b3b;
+}
+
 .mypanelTitle {
   color: #444444;
   fontFamily: Arial;
@@ -41,6 +51,13 @@ Panel {
 }
 
 .meetingNameLabelStyle {
+  fontWeight: bold;
+  fontSize: 15;
+  fontFamily: Arial;
+  color: #e1e2e5;
+}
+
+.recordingLabelStyle {
   fontWeight: bold;
   fontSize: 15;
   fontFamily: Arial;
@@ -195,6 +212,43 @@ DataGrid {
   icon: Embed('assets/images/triangle.png');    
 }
 
+.voiceConfDefaultButtonStyle {
+  icon: Embed('assets/images/headset.png');    
+}
+
+.voiceConfActiveButtonStyle {
+  icon: Embed('assets/images/headset_open.png');    
+}
+
+.voiceConfInactiveButtonStyle {
+  icon: Embed('assets/images/headset_close.png');    
+}
+
+.webcamDefaultButtonStyle {
+  icon: Embed('assets/images/webcam.png');    
+}
+
+.webcamOnButtonStyle {
+  icon: Embed('assets/images/webcam_on.png');    
+}
+
+.webcamOffButtonStyle {
+  icon: Embed('assets/images/webcam_close.png');    
+}
+
+.deskshareDefaultButtonStyle {
+  icon: Embed('assets/images/deskshare_icon.png');    
+}
+
+.deskshareOnButtonStyle {
+  icon: Embed('assets/images/deskshare_on.png');    
+}
+
+.deskshareOffButtonStyle {
+  icon: Embed('assets/images/deskshare_close.png');    
+}
+
+
 .presentationUploadButtonStyle, .presentationBackButtonStyle, .presentationBackButtonDisabledStyle, .presentationForwardButtonStyle, .presentationForwardButtonDisabledStyle,
 .presentationFitToWidthButtonStyle, .presentationFitToPageButtonStyle 
 {
@@ -266,6 +320,16 @@ DataGrid {
   fontFamily: Arial;
 }
 
+.deskshareControlButtonStyle {
+  fillAlphas: 1, 1, 1, 1;
+  fillColors: #fefeff, #e1e2e5, #ffffff, #eeeeee;
+  color: #5e5f63;
+  textRollOverColor: #5e5f63;
+  textSelectedColor: #5e5f63;
+  borderColor: #b9babc;  
+  cornerRadius: 17;
+}
+
 .videoMuteButtonStyle, .videoUnmutedButtonStyle, .videoSwitchPresenterButtonStyle, .videoEjectUserButtonStyle, .videoPrivateChatButtonStyle {
   fillAlphas: 1, 1, 1, 1;
   fillColors: #fefeff, #e1e2e5, #ffffff, #eeeeee;
@@ -328,7 +392,7 @@ DataGrid {
   fontWeight: bold;
 }
 
-.presentationUploadChooseFileLabelStyle, .presentationNamesLabelStyle {
+.presentationNamesLabelStyle {
   fontFamily: Arial;
   fontSize: 14;  
   fontWeight: bold;
@@ -387,8 +451,24 @@ DataGrid {
 
 }
 
+.presentationUploadFileFormatHintBoxStyle {
+	backgroundColor: #D4D4D4;
+	dropShadowEnabled: false;
+	paddingLeft: 10;
+	paddingRight: 10
+}
+
 .presentationUploadFileFormatHintTextStyle {
 	fontWeight: bold;
+}
+
+.desktopShareTextStyle {
+	fontSize:	11;
+	fontWeight:	bold;	
+}
+
+.chromeJavaHelpImage {
+	imageSource: Embed(source='assets/images/chromePluginBlocked.png');
 }
 
 .cameraDisplaySettingsWindowStyle {
@@ -439,7 +519,7 @@ DataGrid {
   fontWeight: bold;    
 }
 
-.micSettingsWindowHearFromHeadsetLabelStyle, .micSettingsWindowSpeakIntoMicLabelStyle, .micSettingsWindowMicNameLabelStyle {
+.micSettingsWindowHearFromHeadsetLabelStyle, .micSettingsWindowSpeakIntoMicLabelStyle, .micSettingsWindowMicNameLabelStyle, .webcamPermissionSettingsTextStyle {
   fontFamily: Arial;
   fontSize: 12;    
 }
@@ -759,4 +839,25 @@ Alert {
 
 .recordButtonStyleStop {
   icon:   Embed('assets/images/control-record-stop.png');
+}
+
+.statusImageStyle {
+  successImage:   Embed(source='assets/images/status_success.png');
+  warningImage:   Embed(source='assets/images/status_warning.png');
+  failImage:      Embed(source='assets/images/status_fail.png');
+}
+
+.warningButtonStyle {
+  icon:   Embed('assets/images/status_warning_20.png');
+}
+
+.statusTitleStyle {
+  fontWeight: bold;
+  fontSize: 12;
+  paddingBottom: 0;
+}
+
+.statusMessageStyle {
+  fontSize: 12;
+  paddingTop: 0;
 }

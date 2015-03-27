@@ -22,16 +22,20 @@ package org.bigbluebutton.modules.layout.model {
 
 		import flash.utils.Dictionary;
 		import flexlib.mdi.containers.MDICanvas;
-		import flexlib.mdi.containers.MDIWindow;
-		
+		import flexlib.mdi.containers.MDIWindow;		
 		import org.bigbluebutton.common.LogUtil;
 		import org.bigbluebutton.common.Role;
 		import org.bigbluebutton.core.managers.UserManager;
 		import org.bigbluebutton.modules.layout.managers.OrderManager;
 		
+    private static const LOG:String = "Layout::LayoutDefinition - ";
+    
 		[Bindable] public var name:String;
 		// default is a reserved word in actionscript
 		[Bindable] public var defaultLayout:Boolean = false;
+    
+    public var currentLayout:Boolean = false;
+    
 		private var _layoutsPerRole:Dictionary = new Dictionary();
 		
 		static private var _ignoredWindows:Array = new Array("AvatarWindow", "PublishWindow", 
@@ -88,7 +92,7 @@ package org.bigbluebutton.modules.layout.model {
 				return _layoutsPerRole[Role.PRESENTER];
 			} else {
 				LogUtil.error("There's no layout that fits the participants profile");
-        trace("LayoutDefinition::getMyLayout There's no layout that fits the participants profile");
+        //trace(LOG + "getMyLayout There's no layout that fits the participants profile");
 				return null;
 			}
 		}
@@ -185,10 +189,14 @@ package org.bigbluebutton.modules.layout.model {
 			
 			var type:String;
 			for each (var window:MDIWindow in windows) {
-					type = WindowLayout.getType(window);
-	
-				if (!ignoreWindowByType(type))
+			  type = WindowLayout.getType(window);
+	      //trace(LOG + "Determine if we need to apply layout [" + name + "] for window [" + type + "]");
+				if (!ignoreWindowByType(type)) {
+          //trace(LOG + "Applying layout [" + name + "] to window [" + type + "]");
 					WindowLayout.setLayout(canvas, window, transformedLayout[type]);
+        } else {
+          //trace(LOG + "Ignoring layout [" + name + "] to window [" + type + "]");
+        }
 			}
 		}
 		
